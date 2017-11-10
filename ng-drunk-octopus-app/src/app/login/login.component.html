@@ -1,17 +1,16 @@
 <div class="container">
-	<h1>Drunken Octopus</h1>
 	<div class="jumbotron">
 		<p>Login</p>
 		<div class="form-inline">
 			<div class="form-group">
 				<label class="sr-only" for="usernameInput">Username</label>
-				<input id="usernameInput" data-ng-model="username" type="text" class="form-control" placeholder="username">
+				<input id="usernameInput" #username type="text" class="form-control" placeholder="username">
 			</div>
 			<div class="form-group">
 				<label class="sr-only" for="passwordInput">Password</label>
-				<input id="passwordInput" data-ng-model="password" type="password" class="form-control" placeholder="password">
+				<input id="passwordInput" #password type="password" class="form-control" placeholder="password">
 			</div>
-			<button data-ng-click="login()" class="btn btn-default">Log in</button>
+			<button (click)="login(username.value, password.value)" class="btn btn-default">Log in</button>
 		</div>
 	</div>
 </div>
