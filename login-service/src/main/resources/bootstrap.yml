@@ -2,9 +2,9 @@
 spring: 
   application: 
     name: login-service
-  cloud:
-    config:
-      uri: http://localhost:9000
+#  cloud:
+#    config:
+#      uri: http://localhost:9000
   jpa:
     database-platform: org.hibernate.dialect.Oracle10gDialect
     database: ORACLE
@@ -16,8 +16,8 @@ spring:
     username: octocat_user
     password: p4ssw0rd
     driver-class-name: oracle.jdbc.OracleDriver
-#server:
-#  port: 8081
+server:
+  port: 8081
 eureka:
   instance:
     hostname: localhost
