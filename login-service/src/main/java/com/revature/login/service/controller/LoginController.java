@@ -1,6 +1,6 @@
 package com.revature.login.service.controller;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,28 +19,29 @@ public class LoginController {
 	}
 	
 	//----The following may be moved to the data service----//
-	@Autowired
-	SystemUserRepository userRepo;
+	//@Autowired
+	//SystemUserRepository userRepo;
 	
 	@GetMapping("/test")
-	@Transactional
+	//@Transactional
 	public SystemUser getUser() {
 		
 		int findId = 1;
 		
-		if (!userRepo.exists(findId)) {
+		//if (!userRepo.exists(findId)) {
 			SystemUser newUser = new SystemUser();
 			newUser.setId(findId);
 			newUser.setFirstName("Demo");
 			newUser.setLastName("User");
 			newUser.setPassword("password");
-			newUser = userRepo.save(newUser);
+			//newUser = userRepo.save(newUser);
 			System.out.println("Created new user: " + newUser);
-		}
+			return newUser;
+		//}
 		
-		SystemUser testUser = userRepo.findOne(1);
-		System.out.println("testUser: " + testUser.toString());
-		return testUser;
+		//SystemUser testUser = userRepo.findOne(1);
+		//System.out.println("testUser: " + testUser.toString());
+		//return testUser;
 	}
 	
 }
