@@ -2,7 +2,6 @@
 spring: 
   application: 
     name: login-service
-  
   #test update
   #test update
   
