@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: service-config
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: jpwru
+Built-By: Ben
 Implementation-Vendor-Id: com.revature
-Build-Jdk: 1.8.0_144
+Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/service-conf
  ig/
 Created-By: Maven Integration for Eclipse
