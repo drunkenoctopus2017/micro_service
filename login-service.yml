@@ -1,0 +1,5 @@
+spring: 
+  application: 
+    name: login-service
+server:
+  port: 8081
