@@ -2,8 +2,7 @@
 spring: 
   application: 
     name: login-service
-  #test update
-  #test update
+  #test update with Clement
   
   #cloud:
   #  config:
