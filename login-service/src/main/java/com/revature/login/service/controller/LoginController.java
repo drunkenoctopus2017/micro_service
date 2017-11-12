@@ -109,7 +109,7 @@ public class LoginController {
 		//SystemUser testUser = userRepo.findOne(1);
 		//System.out.println("testUser: " + testUser.toString());
 		//return testUser;
-		
+		System.out.println("users: " + users);
 		return users;
 	}
 }
