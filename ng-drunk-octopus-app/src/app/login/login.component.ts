@@ -8,6 +8,7 @@ import { User } from '../user'
     templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit{
+    user: User;
     private headers = new Headers({'Content-Type': 'application/json'});
     ngOnInit(): void {
     }
@@ -17,11 +18,20 @@ export class LoginComponent implements OnInit{
 
     login(username: string, password: string): Promise<User> {
         console.log("doing login method angular side");
+        console.log("input: "+username+" "+password);
         return this.http
-        .post('test', JSON.stringify({username: username, password: password}), {headers: this.headers})
+        .get('login-service/test')
         .toPromise()
         .then(res => res.json() as User)
         .catch(this.handleError);
+        // .post('login-service/test', JSON.stringify({username: username, password: password}), {headers: this.headers})
+        // .toPromise()
+        // .then(res => res.json() as User)
+        // .catch(this.handleError);
+    }
+
+    getData() {
+        this.login("some", "data").then(user => this.user = user);
     }
 
     private handleError(error: any): Promise<any> {
