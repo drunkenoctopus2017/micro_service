@@ -1,5 +1,8 @@
 package com.revature.login.service.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +47,69 @@ public class LoginController {
 		//return testUser;
 	}
 	
+	
+	@GetMapping("/getAllUsers")
+	//@Transactional
+	public List<SystemUser> getAllUsers() {
+		
+		int findId = 1;
+		
+		List<SystemUser> users = new ArrayList<>();
+		
+		
+		
+		
+		
+		//if (!userRepo.exists(findId)) {
+			SystemUser newUser = new SystemUser();
+			newUser.setId(findId++);
+			newUser.setFirstName("Demo");
+			newUser.setLastName("User");
+			newUser.setUsername("nullname");
+			newUser.setPassword("password");
+			//newUser = userRepo.save(newUser);
+			//System.out.println("Created new user: " + newUser);
+			//return newUser;
+		//}
+			
+		users.add(newUser);
+		
+		newUser = new SystemUser();
+		newUser.setId(findId++);
+		newUser.setFirstName("Patrick");
+		newUser.setLastName("Runyan");
+		newUser.setUsername("jpwrunyan");
+		newUser.setPassword("jetfuel");
+		users.add(newUser);
+		
+		newUser = new SystemUser();
+		newUser.setId(findId++);
+		newUser.setFirstName("Jibril");
+		newUser.setLastName("Burleigh");
+		newUser.setUsername("thisthatthethird");
+		newUser.setPassword("b");
+		users.add(newUser);
+		
+		newUser = new SystemUser();
+		newUser.setId(findId++);
+		newUser.setFirstName("Ben");
+		newUser.setLastName("Rogers");
+		newUser.setUsername("brogers");
+		newUser.setPassword("g00dpassword");
+		users.add(newUser);
+		
+		newUser = new SystemUser();
+		newUser.setId(findId++);
+		newUser.setFirstName("Elvis");
+		newUser.setLastName("Yang");
+		newUser.setUsername("waveeyang");
+		newUser.setPassword("picksomethingIdontknow");
+		users.add(newUser);
+		
+		//SystemUser testUser = userRepo.findOne(1);
+		//System.out.println("testUser: " + testUser.toString());
+		//return testUser;
+		
+		return users;
+	}
 }
