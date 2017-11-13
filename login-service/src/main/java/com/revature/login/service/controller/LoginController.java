@@ -1,16 +1,16 @@
 package com.revature.login.service.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-//import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.login.service.model.SystemUser;
-import com.revature.login.service.repository.SystemUserRepository;
 
 @RestController
 public class LoginController {
@@ -55,9 +55,6 @@ public class LoginController {
 		int findId = 1;
 		
 		List<SystemUser> users = new ArrayList<>();
-		
-		
-		
 		
 		
 		//if (!userRepo.exists(findId)) {
@@ -112,4 +109,15 @@ public class LoginController {
 		
 		return users;
 	}
+	
+	@PostMapping(path="/addUser", consumes = "application/json", produces = "application/json")
+	@ResponseBody
+	public List<SystemUser> addUser(@RequestBody SystemUser user){
+		user.setId(new Date().getTime());
+		List<SystemUser> allUsers = this.getAllUsers();
+		allUsers.add(user);
+		
+		return allUsers;
+	}
+	
 }
