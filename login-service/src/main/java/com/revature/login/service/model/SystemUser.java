@@ -16,7 +16,7 @@ public class SystemUser {
 	//@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_SEQ")
 	//@SequenceGenerator(sequenceName="customer_seq", allocationSize=1, name="USER_ID_SEQ")
-	private int id;
+	private long id;
 	
 	private String firstName;
 	
@@ -31,11 +31,11 @@ public class SystemUser {
 	public UserRole role;
 	*/
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
