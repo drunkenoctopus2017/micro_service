@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="jumbotron">
-		<p>Login</p>
+		<p>Register</p>
 		<div class="form-inline">
 			<div class="form-group">
 				<label class="sr-only" for="usernameInput">Username</label>
@@ -10,13 +10,31 @@
 				<label class="sr-only" for="passwordInput">Password</label>
 				<input id="passwordInput" #password type="password" class="form-control" placeholder="password">
 			</div>
-			<button (click)="getData()" class="btn btn-default">Log in</button>
+			<div class="form-group">
+				<label class="sr-only" for="fnInput">First Name</label>
+				<input id="fnInput" #firstName type="text" class="form-control" placeholder="first name">
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="lnInput">Last Name</label>
+				<input id="lnInput" #lastName type="text" class="form-control" placeholder="last name">
+			</div>
+			<button (click)="testAdd(); addUser(username.value, password.value, firstName.value, lastName.value);" class="btn btn-default">Register</button>
 		</div>
-		<div class="container">
-			<h1>{{user.firstName}} {{user.lastName}}</h1>
+		<div *ngIf="user" class="container" >
+			<h2>{{user.firstName}} {{user.lastName}}</h2>
 			<h2>ID: {{user.id}}</h2>
 			<h2>Username: {{user.username}}</h2>
 			<h2>Password: just kidding</h2>
 		</div>
+		<ul class="heroes">
+			<!-- *ngFor is a specific type of directive called a structural directive, so is *ngIf -->
+			<li *ngFor="let user of users">
+				
+			  <!-- each hero goes here -->
+				<span class="badge">ID: {{user.id}}</span> <span>First Name: {{user.firstName}}</span> <span>Last Name: {{user.lastName}}</span>
+				<br><span class="badge">Username: {{user.username}}</span> <span>hey look it's a password: {{user.password}}</span>
+			  
+			</li>
+		  </ul>
 	</div>
 </div>

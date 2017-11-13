@@ -18,7 +18,7 @@ public class LoginController {
 	@GetMapping("/")
 	public String helloBoot() {
 		System.out.println("Get Mapping -Get Request /");
-		return new String("Helooo!");
+		return new String("Helooo!!");
 	}
 	
 	//----The following may be moved to the data service----//
@@ -37,6 +37,7 @@ public class LoginController {
 			newUser.setFirstName("Demo");
 			newUser.setLastName("User");
 			newUser.setPassword("password");
+			newUser.setUsername("demouser");
 			//newUser = userRepo.save(newUser);
 			System.out.println("Created new user: " + newUser);
 			return newUser;
@@ -106,7 +107,7 @@ public class LoginController {
 		//SystemUser testUser = userRepo.findOne(1);
 		//System.out.println("testUser: " + testUser.toString());
 		//return testUser;
-		
+		System.out.println("users: " + users);
 		return users;
 	}
 	
