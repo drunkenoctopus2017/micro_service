@@ -23,15 +23,16 @@
 		<div *ngIf="message" class="container" >
 			<h2>Message of the Day:</h2> <br>
 			<h2>{{message}}</h2>
-			<button (click)="getRandomMessage()" class="btn btn-default">Get a new message</button>
+			<button (click)="getRandomMessage()" class="btn btn-xs">Get a new message</button>
 		</div>
+		<br />
 		<ul class="heroes">
 			<!-- *ngFor is a specific type of directive called a structural directive, so is *ngIf -->
 			<li *ngFor="let user of users">
 				
 			  <!-- each hero goes here -->
-				<span class="badge">ID: {{user.id}}</span> <span>First Name: {{user.firstName}}</span> <span>Last Name: {{user.lastName}}</span>
-				<br><span class="badge">Username: {{user.username}}</span> <span>hey look it's a password: {{user.password}}</span>
+				<span class="badge">ID: {{user.id}}</span> <span>Name: {{user.firstName}} {{user.lastName}}</span>
+				<br><span class="badge">{{user.username}}</span> <span>Password: {{user.password}}</span>
 			  
 			</li>
 		  </ul>
