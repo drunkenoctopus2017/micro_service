@@ -9,8 +9,10 @@ import { User } from '../user'
 })
 export class LoginComponent implements OnInit{
     user: User;
+    users: User[];
     private headers = new Headers({'Content-Type': 'application/json'});
     ngOnInit(): void {
+        this.getUsers().then(userList => this.users = userList);
     }
     constructor(private http: Http){
 
@@ -30,7 +32,14 @@ export class LoginComponent implements OnInit{
         // .catch(this.handleError);
     }
 
-    getData() {
+    getUsers(): Promise<User[]> {
+        return this.http.get('login-service/getAllUsers')
+            .toPromise()
+            .then(response => response.json() as User[])
+            .catch(this.handleError);
+    }
+
+    getData(): void {
         this.login("some", "data").then(user => this.user = user);
     }
 

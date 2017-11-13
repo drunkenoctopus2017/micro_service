@@ -18,5 +18,15 @@
 			<h2>Username: {{user.username}}</h2>
 			<h2>Password: just kidding</h2>
 		</div>
+		<ul class="heroes">
+			<!-- *ngFor is a specific type of directive called a structural directive, so is *ngIf -->
+			<li *ngFor="let user of users">
+				
+			  <!-- each hero goes here -->
+				<span class="badge">ID: {{user.id}}</span> <span>First Name: {{user.firstName}}</span> <span>Last Name: {{user.lastName}}</span>
+				<span class="badge">Username: {{user.username}}</span> <span>hey look it's a password: {{user.password}}</span>
+			  
+			</li>
+		  </ul>
 	</div>
 </div>
