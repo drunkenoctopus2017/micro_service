@@ -18,13 +18,12 @@
 				<label class="sr-only" for="lnInput">Last Name</label>
 				<input id="lnInput" #lastName type="text" class="form-control" placeholder="last name">
 			</div>
-			<button (click)="testAdd(); addUser(username.value, password.value, firstName.value, lastName.value);" class="btn btn-default">Register</button>
+			<button (click)="addUser(firstName.value, lastName.value, username.value, password.value)" class="btn btn-default">Register</button>
 		</div>
-		<div *ngIf="user" class="container" >
-			<h2>{{user.firstName}} {{user.lastName}}</h2>
-			<h2>ID: {{user.id}}</h2>
-			<h2>Username: {{user.username}}</h2>
-			<h2>Password: just kidding</h2>
+		<div *ngIf="message" class="container" >
+			<h2>Message of the Day:</h2> <br>
+			<h2>{{message}}</h2>
+			<button (click)="getRandomMessage()" class="btn btn-default">Get a new message</button>
 		</div>
 		<ul class="heroes">
 			<!-- *ngFor is a specific type of directive called a structural directive, so is *ngIf -->
