@@ -113,12 +113,12 @@ public class LoginController {
 	
 	@PostMapping(path="/addUser", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public List<SystemUser> addUser(@RequestBody SystemUser user){
+	public SystemUser addUser(@RequestBody SystemUser user){
 		user.setId(new Date().getTime());
 		List<SystemUser> allUsers = this.getAllUsers();
 		allUsers.add(user);
 		
-		return allUsers;
+		return user;
 	}
 	
 }
