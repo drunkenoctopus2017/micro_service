@@ -2,8 +2,15 @@ package com.revature.login.service.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.login.service.model.SystemUser;
+import com.revature.login.service.repository.SystemUserRepository;
 
 @RestController
 public class LoginController {
@@ -22,27 +30,38 @@ public class LoginController {
 	}
 	
 	//----The following may be moved to the data service----//
-	//@Autowired
-	//SystemUserRepository userRepo;
+	@Autowired
+	SystemUserRepository userRepo;
 	
 	@GetMapping("/test")
-	//@Transactional
 	public SystemUser getUser() {
 		
+		Iterator<SystemUser> it = userRepo.findAll().iterator();
+		
+		for (SystemUser su : userRepo.findAll()) {
+			su.toString();
+		}
+		
+		while (it.hasNext()) {
+			System.err.println(it.next());
+		}
+		
 		int findId = 1;
-		
-		//if (!userRepo.exists(findId)) {
-			SystemUser newUser = new SystemUser();
-			newUser.setId(findId);
-			newUser.setFirstName("Demo");
-			newUser.setLastName("User");
-			newUser.setPassword("password");
-			newUser.setUsername("demouser");
-			//newUser = userRepo.save(newUser);
-			System.out.println("Created new user: " + newUser);
-			return newUser;
-		//}
-		
+		SystemUser user;
+		if (userRepo.exists(findId)) {
+			user = userRepo.findOne(findId);
+			System.out.println("Found user: " + user);
+		} else {
+			user = new SystemUser();
+			user.setId(findId);
+			user.setFirstName("Demo");
+			user.setLastName("User");
+			user.setPassword("password");
+			user.setUsername("demouser");
+			user = userRepo.save(user);
+			System.out.println("Created new user: " + user);
+		}
+		return user;
 		//SystemUser testUser = userRepo.findOne(1);
 		//System.out.println("testUser: " + testUser.toString());
 		//return testUser;
@@ -114,11 +133,16 @@ public class LoginController {
 	@PostMapping(path="/addUser", consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public SystemUser addUser(@RequestBody SystemUser user){
-		user.setId(new Date().getTime());
+		user.setId((int) (new Date().getTime() % Integer.MAX_VALUE));
 		List<SystemUser> allUsers = this.getAllUsers();
 		allUsers.add(user);
 		
 		return user;
 	}
 	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<Exception> handleException(Exception e){
+		e.printStackTrace();
+		return new ResponseEntity<Exception>(e, HttpStatus.CONFLICT);
+	}
 }

@@ -1,22 +1,22 @@
 package com.revature.login.service.model;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.SequenceGenerator;
-//import javax.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-//@Entity
-//@Table(name="SYSTEM_USERS")
+@Entity
+@Table(name="SYSTEM_USERS")
 @Component
 public class SystemUser {
-	//@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_SEQ")
-	//@SequenceGenerator(sequenceName="customer_seq", allocationSize=1, name="USER_ID_SEQ")
-	private long id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_SEQ")
+	@SequenceGenerator(sequenceName="customer_seq", allocationSize=1, name="USER_ID_SEQ")
+	private int id;
 	
 	private String firstName;
 	
@@ -31,11 +31,11 @@ public class SystemUser {
 	public UserRole role;
 	*/
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
